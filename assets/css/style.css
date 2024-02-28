@@ -1,18 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background: rgb(34, 193, 195);
   background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
-  height: 100vh;
+  height: 200vh;
   background-size: cover;
 }
 
 #my_application {
   margin: 0 auto;
   font-weight: 600;
-  padding:1rem;
-  width:80%;
+  padding: 1rem;
+  width: 85%;
+  
+
 }
 
 #my_card {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+
   h1 {
     text-shadow: 2px 2px 5px red;
   }
@@ -21,10 +29,11 @@ body {
 #my_game {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
-#difficulty_select{
-  width:40%;
+#difficulty_select {
+  width: 40%;
   margin: auto;
 }
 
@@ -42,17 +51,23 @@ body {
 
 [class*="box"] {
   aspect-ratio: 1 / 1;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 3px solid grey;
-  border-bottom-right-radius: 3px solid darkgrey;
-  border-top: 3px solid lightgrey;
-  border-radius: 3px;
-  font-size: 1.2rem;
+  border-image: linear-gradient(#22c1c3, #fdbb2d) 30;
+  border-width: 4px;
+  border-style: solid;
+  font-size: 1.4rem;
+  text-shadow: 0 0 5px #ff0000de;
 }
 
 .azure {
   background-color: skyblue;
 }
+
+
+/* 
+
+
+background: rgb(34,193,195);
+background: linear-gradient(180deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);*/

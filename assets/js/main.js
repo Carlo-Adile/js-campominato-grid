@@ -23,6 +23,8 @@ document.getElementById("difficulty_select").addEventListener('submit', function
       gridBox = 100;
       break;
   }
+
+  /* esegui finchè myGame ha un figlio */
   while (myGame.firstChild) {
     myGame.removeChild(myGame.firstChild);
   }
