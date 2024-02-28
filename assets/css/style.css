@@ -9,8 +9,6 @@
   flex-wrap: wrap;
 }
 
-
-
 .box_easy{
   width: calc(100% / 10)
 }
@@ -25,6 +23,12 @@
 
 [class*="box"] {
   aspect-ratio: 1 / 1;
-  background-color: aliceblue;
   border:1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.azure{
+  background-color: skyblue;
 }
