@@ -1,15 +1,14 @@
-let gridBox = 0;
-
+/* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
-
 const myGame = document.getElementById("my_game")
 
+/* click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty()
-}
-)
+})
 
+/* determina la difficoltà */
 function pickDifficulty() {
   const difficulty = difficultyValue.value;
 
@@ -27,18 +26,16 @@ function pickDifficulty() {
       gridBox = 100;
       break;
   }
-
   campoMinato(difficulty)
 }
 
+/* crea le box */
 function campoMinato(difficulty) {
 
   /* esegui finchè myGame ha un figlio */
   while (myGame.firstChild) {
     myGame.removeChild(myGame.firstChild);
   }
-
-  console.log(gridBox)
 
   for (index = 1; index < gridBox + 1; index++) {
     let box = document.createElement("div")
@@ -57,15 +54,14 @@ function campoMinato(difficulty) {
         box.classList.add('box_easy')
         break;
     }
+
+    /* gestisci il contenuto e il toggle */
     box.innerHTML = (index)
-
     myGame.appendChild(box);
-
     box.addEventListener('click', function () {
       this.classList.toggle('azure');
     });
   }
-
 }
 
 
