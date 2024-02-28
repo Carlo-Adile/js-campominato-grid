@@ -4,12 +4,12 @@ const difficultyValue = document.getElementById("difficulty_value")
 
 const myGame = document.getElementById("my_game")
 
-document.getElementById("difficulty_select").addEventListener('submit', function(e){
+document.getElementById("difficulty_select").addEventListener('submit', function (e) {
   e.preventDefault();
 
   const difficulty = difficultyValue.value;
 
-  switch(difficulty) {
+  switch (difficulty) {
     case "1":
       gridBox = 100;
       break;
@@ -23,13 +23,16 @@ document.getElementById("difficulty_select").addEventListener('submit', function
       gridBox = 100;
       break;
   }
-  
+  while (myGame.firstChild) {
+    myGame.removeChild(myGame.firstChild);
+  }
+
   console.log(gridBox)
 
-  for(index = 1; index < gridBox+1; index++){
+  for (index = 1; index < gridBox + 1; index++) {
     let box = document.createElement("div")
 
-    switch(difficulty) {
+    switch (difficulty) {
       case "1":
         box.classList.add('box_easy')
         break;

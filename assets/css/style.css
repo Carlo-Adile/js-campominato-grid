@@ -1,24 +1,40 @@
-#my_application{
-  margin: auto;
-  padding:1rem;
+body {
+  background: rgb(34, 193, 195);
+  background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
+  height: 100vh;
+  background-size: cover;
 }
 
-#my_game{
-  padding:1rem;
+#my_application {
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+#my_card {
+  h1 {
+    text-shadow: 2px 2px 5px red;
+  }
+}
+
+#my_game {
   display: flex;
   flex-wrap: wrap;
-  
 }
 
-.box_easy{
+#difficulty_select{
+  width:40%;
+  margin: auto;
+}
+
+.box_easy {
   width: calc(100% / 10)
 }
 
-.box_medium{
+.box_medium {
   width: calc(100% / 9)
 }
 
-.box_hard{
+.box_hard {
   width: calc(100% / 7)
 }
 
@@ -28,7 +44,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:3px;
   border: 3px solid grey;
   border-bottom-right-radius: 3px solid darkgrey;
   border-top: 3px solid lightgrey;
@@ -36,6 +51,6 @@
   font-size: 1.2rem;
 }
 
-.azure{
+.azure {
   background-color: skyblue;
 }
