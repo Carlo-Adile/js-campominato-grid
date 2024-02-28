@@ -24,8 +24,32 @@ document.getElementById("difficulty_select").addEventListener('submit', function
       break;
   }
   
-  console.log(difficulty)
+  console.log(gridBox)
 
+  for(index = 0; index < gridBox; index++){
+    let box = document.createElement("div")
+
+    switch(difficulty) {
+      case "1":
+        box.classList.add('box_easy')
+        break;
+      case "2":
+        box.classList.add('box_medium')
+        break;
+      case "3":
+        box.classList.add('box_hard')
+        break;
+      default:
+        box.classList.add('box_easy')
+        break;
+    }
+
+    myGame.appendChild(box);
+    
+    /* box.classList.add('box')
+    box.innerHTML(index) */
+    /* box.addEventListener() */
+  }
 
 })
 

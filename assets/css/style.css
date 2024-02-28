@@ -2,3 +2,29 @@
   margin: auto;
   padding:1rem;
 }
+
+#my_game{
+  padding:1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+.box_easy{
+  width: calc(100% / 10)
+}
+
+.box_medium{
+  width: calc(100% / 9)
+}
+
+.box_hard{
+  width: calc(100% / 7)
+}
+
+[class*="box"] {
+  aspect-ratio: 1 / 1;
+  background-color: aliceblue;
+  border:1px solid black;
+}
