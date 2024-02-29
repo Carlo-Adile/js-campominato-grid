@@ -1,17 +1,20 @@
 /* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
 const myGame = document.getElementById("my_game")
+let bombList = []
+let gridBox = 0;
 
 /* click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty()
+  
 })
 
 /* determina la difficoltà */
 function pickDifficulty() {
   const difficulty = difficultyValue.value;
-
+  
   switch (difficulty) {
     case "1":
       gridBox = 100;
@@ -26,7 +29,38 @@ function pickDifficulty() {
       gridBox = 100;
       break;
   }
+
+
+  getRandomNumb()
+
   campoMinato(difficulty)
+  console.log(gridBox)
+  return gridBox
+}
+
+
+/* add 16 bombs */
+/* produci il numero casuale */
+function getRandomNumb(min, max){
+  /* check */
+  console.log("random numb is reading gridBox: " + gridBox)
+  min = 1;
+  max = gridBox;
+  let mushroomCount = 0;
+  let avoidLoop = 0;
+
+  while(mushroomCount < 16){
+    let numbToAdd = parseInt(Math.random() * (max - min + 1) + min);
+    console.log("random numb is " + numbToAdd)
+
+    if(bombList.includes(numbToAdd) === false){
+      bombList.push(numbToAdd);
+      mushroomCount++;
+    }
+    
+    console.log(bombList)
+  }
+  
 }
 
 /* crea le box */
@@ -56,15 +90,30 @@ function campoMinato(difficulty) {
     }
 
     /* gestisci il contenuto e il toggle */
-    box.innerHTML = (index)
+    if(bombList.includes(index)){
+      box.innerHTML = ("bomb")
+    }
+    else{
+      box.innerHTML = (index)
+    }
+    
+    
+    
+   
     myGame.appendChild(box);
     box.addEventListener('click', function () {
       this.classList.toggle('azure');
+      
     });
+
   }
+  
 }
 
-
-
-
+ /* generate bomb list */
+ /* for(index = 0; index < bombList.length; index++){
+  let placeHere = bombList[index]
+  box.innerHTML
+  console.log("place a bomb at box " + placeHere)
+ } */
 
