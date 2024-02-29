@@ -1,16 +1,16 @@
+/* IL MALE!!! da fare refactoring */
 let bombList = []
 let gameBox = []
+let gridBox = 0;
+
 /* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
 const myGame = document.getElementById("my_game")
-
-let gridBox = 0;
 
 /* click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty()
-
 })
 
 /* determina la difficoltà */
@@ -43,7 +43,7 @@ function pickDifficulty() {
 /* add 16 bombs */
 /* produci il numero casuale */
 function getRandomNumb(min, max) {
-
+  bombList.length = 0
   /* check */
   console.log("random numb is reading gridBox: " + gridBox)
   min = 1;
@@ -95,7 +95,7 @@ function campoMinato(difficulty) {
     /* gestisci il contenuto html */
     if (bombList.includes(index)) {
       box.innerHTML = (index)
-      
+
       box.classList.add('bomb')
     }
     else {
@@ -104,7 +104,7 @@ function campoMinato(difficulty) {
     myGame.appendChild(box);
     gameBox.push(box);
   }
-  
+
   gameEvent();
 }
 
@@ -112,54 +112,29 @@ function campoMinato(difficulty) {
 function gameEvent() {
   gameBox.forEach(box => {
     box.addEventListener('click', toggleEvent);
-    /* box.addEventListener('click', function () {
-      if (this.classList.contains('bomb')) {
-        box.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
-        youLost();
-      }
-      else {
-        this.classList.toggle('azure');
-      }
-    }); */
   })
-  
+
 }
 
-function toggleEvent(){
+function toggleEvent() {
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
     youLost();
   }
   else {
-    this.classList.toggle('azure');
-  }
-  /* gameBox.forEach(box => {
-    if (this.classList.contains('bomb')) {
-      box.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
-      youLost();
-    }
-    else {
+    if (this.classList.contains('azure') === false) {
       this.classList.toggle('azure');
     }
-  }) */
-  
+  }
+
+  /* verifica quando l'utente clicca su una bomba */
+  function youLost() {
+    gameBox.forEach(box => {
+      box.removeEventListener('click', toggleEvent);
+    });
+    bombList.length = 0
+    console.log("you lost!");
+  }
 }
-
-/* function gameEvent() {
-  gameBox.forEach(box => {
-    addGameEvent(box);
-  });
-} */
-
-/* verifica quando l'utente clicca su una bomba */
-function youLost() {
-  
-  gameBox.forEach(box => {
-    box.removeEventListener('click', toggleEvent);
-    
-  });
-  console.log("you lost!");
-}
-
 
 
