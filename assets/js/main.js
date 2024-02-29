@@ -1,4 +1,5 @@
 let bombList = []
+let gameBox = []
 /* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
 const myGame = document.getElementById("my_game")
@@ -102,21 +103,27 @@ function campoMinato(difficulty) {
     }
 
     myGame.appendChild(box);
+    gameBox.push(box);
     box.addEventListener('click', function () {
-      this.classList.toggle('azure');
+      if (this.classList.contains('bomb')){
+        youLost();
+      }
+      else{
+        this.classList.toggle('azure');
+      }
+      
     });
-    
-  }
-  /* verifica quando l'utente clicka su una bomba */
-  const theBombs = document.querySelectorAll('.bomb');
-    theBombs.forEach(bomb => {
-      bomb.addEventListener('click', event => {
-        console.log('Element clicked:', bomb);
-      });
 
-    });
+  }
 }
 
+/* verifica quando l'utente clicka su una bomba */
+function youLost() {
+    gameBox.forEach(box => {
+    box.removeEventListener('click', campoMinato);
+    console.log("you lost!");
+  });
+}
 
 
 
