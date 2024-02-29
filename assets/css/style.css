@@ -26,14 +26,23 @@ body {
   }
 }
 
-
 #my_game {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width:60%;
-  /* prevent breaking the box borders */
-  /* min-width:605px; */
+  width:50%;
+}
+
+#endgame_screen{
+  
+}
+
+#did_you_win_son{
+  font-size: 2rem;
+}
+
+#your_score{
+  font-size: 1.4 rem;
 }
 
 #difficulty_select {
@@ -64,7 +73,7 @@ body {
   border-width: 3px;
   border-style: solid;
   font-size: 1.2rem;
-  text-shadow: 0 0 5px #ff0000de;
+  text-shadow: 0 0 5px #ff0000ad;
 }
 
 .azure {

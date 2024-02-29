@@ -7,11 +7,18 @@ let userPoint = 0;
 /* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
 const myGame = document.getElementById("my_game")
+const didYouWinSon = document.getElementById("did_you_win_son")
+const endGameResult = document.getElementById("endgame_screen")
+const yourScore = document.getElementById("your_score")
 
 /* click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
-  pickDifficulty()
+  pickDifficulty();
+  didYouWinSon.innerHTML = ('')
+  yourScore.innerHTML = ('')
+  i = 0;
+  i2 = 0;
 })
 
 /* determina la difficoltà */
@@ -129,17 +136,16 @@ function gameEvent() {
 - clicka sulla bomba
 - colora di azzurro 
 */
-function toggleEvent() {
+function toggleEvent(userPoint) {
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
     youLost();
   }
-  else {
-    if (this.classList.contains('azure') === false) {
-      this.classList.toggle('azure');
+  else if(this.classList.contains('azure') === false){
+    this.classList.toggle('azure');
       userPoint++;
-    }
   }
+  return userPoint;
 }
 
 /* GAME OVER
@@ -149,9 +155,40 @@ function youLost() {
     box.removeEventListener('click', toggleEvent);
   });
   bombList.length = 0
-  
+
+  /* check */
   console.log("you lost!");
-  console.log ("you made " + userPoint);
+  console.log("you made " + userPoint);
+  showResult();
+}
+
+/* MOSTRA I RISULTATI */
+let i = 0;
+let i2 = 0;
+let speed = 100;
+let gameOverText = 'Game Over';
+/* let userPointText = `you made a total of ${userPoint} points!!`; */
+let userPointText = "you made a total of ";
+let userPointNumber = userPoint + " points!!"
+console.log("check " + userPoint);
+
+function showResult() {
+  console.log(userPoint)
+  console.log("start of show result effect")
+
+  if (i < gameOverText.length) {
+    didYouWinSon.innerHTML += gameOverText.charAt(i);
+    i++;
+    setTimeout(showResult, speed);
+  }
+  else if (i2 < userPointText.length) {
+    yourScore.innerHTML += userPointText.charAt(i2);
+    i2++;
+    setTimeout(showResult, speed);
+  }
+  else if(i2 = userPointText.length){
+    yourScore.innerHTML += userPointNumber;
+  }
 }
 
 
