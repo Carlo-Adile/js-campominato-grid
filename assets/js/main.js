@@ -95,7 +95,7 @@ function campoMinato(difficulty) {
     /* gestisci il contenuto html */
     if (bombList.includes(index)) {
       box.innerHTML = (index)
-
+      
       box.classList.add('bomb')
     }
     else {
@@ -109,27 +109,56 @@ function campoMinato(difficulty) {
 }
 
 /* aggiungi eventi di gioco */
-function gameEvent(){
+function gameEvent() {
   gameBox.forEach(box => {
-    box.addEventListener('click', function () {
+    box.addEventListener('click', toggleEvent);
+    /* box.addEventListener('click', function () {
       if (this.classList.contains('bomb')) {
-        box.innerHTML = ('<i class="fa-solid fa-bomb"></i>')
+        box.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
         youLost();
       }
       else {
         this.classList.toggle('azure');
       }
-
-    });
+    }); */
   })
+  
 }
 
-/* verifica quando l'utente clicka su una bomba */
-function youLost() {
+function toggleEvent(){
+  if (this.classList.contains('bomb')) {
+    this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
+    youLost();
+  }
+  else {
+    this.classList.toggle('azure');
+  }
+  /* gameBox.forEach(box => {
+    if (this.classList.contains('bomb')) {
+      box.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
+      youLost();
+    }
+    else {
+      this.classList.toggle('azure');
+    }
+  }) */
+  
+}
+
+/* function gameEvent() {
   gameBox.forEach(box => {
-    box.removeEventListener('click', gameEvent);
-    console.log("you lost!");
+    addGameEvent(box);
   });
+} */
+
+/* verifica quando l'utente clicca su una bomba */
+function youLost() {
+  
+  gameBox.forEach(box => {
+    box.removeEventListener('click', toggleEvent);
+    
+  });
+  console.log("you lost!");
 }
 
 
