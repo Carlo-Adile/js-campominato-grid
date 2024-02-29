@@ -40,8 +40,9 @@ function pickDifficulty() {
 }
 
 
-/* add 16 bombs */
-/* produci il numero casuale */
+/* Aggiungi 16 bombe
+genera 16 numeri casuali differenti da 1 a gridBox e li assegna a bombList */
+
 function getRandomNumb(min, max) {
   bombList.length = 0
   /* check */
@@ -65,7 +66,11 @@ function getRandomNumb(min, max) {
   return bombList
 }
 
-/* crea le box */
+/* GENERA LE BOX
+- sistema reset se l'utente clicka nuovamente su start
+- swtich per il corretto stile css delle box
+- 
+ */
 function campoMinato(difficulty) {
 
   /* esegui finchè myGame ha un figlio */
@@ -74,9 +79,11 @@ function campoMinato(difficulty) {
 
   }
 
+  /* size delle box + contenuto interno */
   for (index = 1; index < gridBox + 1; index++) {
     let box = document.createElement("div")
 
+    /* stile CSS */
     switch (difficulty) {
       case "1":
         box.classList.add('box_easy')
@@ -108,7 +115,8 @@ function campoMinato(difficulty) {
   gameEvent();
 }
 
-/* aggiungi eventi di gioco */
+/* CENTRO GESTIONE EVENTI
+aggiungi eventi di gioco */
 function gameEvent() {
   gameBox.forEach(box => {
     box.addEventListener('click', toggleEvent);
@@ -116,6 +124,10 @@ function gameEvent() {
 
 }
 
+/* EVENTI TOGGLE INTERESSATI:
+- clicka sulla bomba
+- colora di azzurro 
+*/
 function toggleEvent() {
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
@@ -126,15 +138,17 @@ function toggleEvent() {
       this.classList.toggle('azure');
     }
   }
-
-  /* verifica quando l'utente clicca su una bomba */
-  function youLost() {
-    gameBox.forEach(box => {
-      box.removeEventListener('click', toggleEvent);
-    });
-    bombList.length = 0
-    console.log("you lost!");
-  }
 }
+
+/* GAME OVER
+verifica quando l'utente clicca su una bomba */
+function youLost() {
+  gameBox.forEach(box => {
+    box.removeEventListener('click', toggleEvent);
+  });
+  bombList.length = 0
+  console.log("you lost!");
+}
+
 
 
