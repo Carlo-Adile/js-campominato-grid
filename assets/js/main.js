@@ -2,6 +2,7 @@
 let bombList = []
 let gameBox = []
 let gridBox = 0;
+let userPoint = 0;
 
 /* riferimento ad HTML */
 const difficultyValue = document.getElementById("difficulty_value")
@@ -136,6 +137,7 @@ function toggleEvent() {
   else {
     if (this.classList.contains('azure') === false) {
       this.classList.toggle('azure');
+      userPoint++;
     }
   }
 }
@@ -147,7 +149,9 @@ function youLost() {
     box.removeEventListener('click', toggleEvent);
   });
   bombList.length = 0
+  
   console.log("you lost!");
+  console.log ("you made " + userPoint);
 }
 
 
