@@ -32,7 +32,6 @@ function pickDifficulty() {
       break;
   }
 
-
   getRandomNumb()
 
   campoMinato(difficulty)
@@ -93,34 +92,42 @@ function campoMinato(difficulty) {
         break;
     }
 
-    /* gestisci il contenuto e il toggle */
+    /* gestisci il contenuto html */
     if (bombList.includes(index)) {
-      box.innerHTML = ("bomb")
+      box.innerHTML = (index)
+
       box.classList.add('bomb')
     }
     else {
       box.innerHTML = (index)
     }
-
     myGame.appendChild(box);
     gameBox.push(box);
+  }
+  
+  gameEvent();
+}
+
+/* aggiungi eventi di gioco */
+function gameEvent(){
+  gameBox.forEach(box => {
     box.addEventListener('click', function () {
-      if (this.classList.contains('bomb')){
+      if (this.classList.contains('bomb')) {
+        box.innerHTML = ('<i class="fa-solid fa-bomb"></i>')
         youLost();
       }
-      else{
+      else {
         this.classList.toggle('azure');
       }
-      
-    });
 
-  }
+    });
+  })
 }
 
 /* verifica quando l'utente clicka su una bomba */
 function youLost() {
-    gameBox.forEach(box => {
-    box.removeEventListener('click', campoMinato);
+  gameBox.forEach(box => {
+    box.removeEventListener('click', gameEvent);
     console.log("you lost!");
   });
 }
