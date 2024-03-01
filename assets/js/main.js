@@ -10,14 +10,16 @@ const myGame = document.getElementById("my_game")
 const didYouWinSon = document.getElementById("did_you_win_son")
 const endGameResult = document.getElementById("endgame_screen")
 const yourScore = document.getElementById("your_score")
-const audioPlayer = document.getElementById("audio_player");
-
+const audioPlayerBomb = document.getElementById("audio_bomb");
+const audioPlayerStart = document.getElementById("audio_start");
+const audioPlayerScore = document.getElementById("audio_point");
 /* START GAME
 click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty();
   gameEvent();
+  audioPlayerStart.play();
   didYouWinSon.innerHTML = ('Click on the box!')
   yourScore.innerHTML = ('try to avoid the bombs')
   i = 0;
@@ -136,12 +138,13 @@ function toggleEvent() {
   
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
-    audioPlayer.play();
+    audioPlayerBomb.play();
     youLost();
   }
   else if(this.classList.contains('azure') === false){
     this.classList.toggle('azure');
       userPoint ++;
+      audioPlayerScore.play();
       console.log("current score is " + userPoint)
   }
 
