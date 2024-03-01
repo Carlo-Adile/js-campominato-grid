@@ -1,20 +1,18 @@
 * {
   box-sizing: border-box;
+  scrollbar-width: none;
 }
 
 /* hide scrollbar */
 ::-webkit-scrollbar {
   display: none;
 }
-* {
-  scrollbar-width: none;
-}
 
 body {
   /* cursor: url('../img/cursor.png') 20 20, auto; */
   background: rgb(34, 193, 195);
   background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
-  height: 110vh;
+  height: 100vh;
   background-size: cover;
   font-family: 'Pixelify Sans', sans-serif !important;
 }
@@ -33,6 +31,10 @@ body {
   h1 {
     text-shadow: 2px 2px 5px red;
   }
+}
+
+#my_card_body{
+  
 }
 
 #my_game {
