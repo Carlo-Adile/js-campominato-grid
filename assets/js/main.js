@@ -117,8 +117,6 @@ function campoMinato(difficulty) {
     myGame.appendChild(box);
     gameBox.push(box);
   }
-
-  
 }
 
 /* CENTRO GESTIONE EVENTI
