@@ -10,6 +10,7 @@ const myGame = document.getElementById("my_game")
 const didYouWinSon = document.getElementById("did_you_win_son")
 const endGameResult = document.getElementById("endgame_screen")
 const yourScore = document.getElementById("your_score")
+const audioPlayer = document.getElementById("audio_player");
 
 /* START GAME
 click sul bottone per avviare */
@@ -135,6 +136,7 @@ function toggleEvent() {
   
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
+    audioPlayer.play();
     youLost();
   }
   else if(this.classList.contains('azure') === false){
