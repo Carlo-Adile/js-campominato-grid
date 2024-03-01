@@ -17,10 +17,11 @@ document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty();
   gameEvent();
-  didYouWinSon.innerHTML = ('')
-  yourScore.innerHTML = ('')
+  didYouWinSon.innerHTML = ('Click on the box!')
+  yourScore.innerHTML = ('try to avoid the bombs')
   i = 0;
   i2 = 0;
+  userPoint = 0;
 })
 
 /* determina la difficoltà */
@@ -47,7 +48,6 @@ function pickDifficulty() {
   campoMinato(difficulty)
   console.log(gridBox)
 }
-
 
 /* Aggiungi 16 bombe
 genera 16 numeri casuali differenti da 1 a gridBox e li assegna a bombList */
@@ -107,9 +107,7 @@ function campoMinato(difficulty) {
     /* gestisci il contenuto html */
     if (bombList.includes(index)) {
       box.innerHTML = (index)
-
       box.classList.add('bomb')
-      
     }
     else {
       box.innerHTML = (index)
@@ -151,6 +149,9 @@ function toggleEvent() {
 /* GAME OVER
 verifica quando l'utente clicca su una bomba */
 function youLost() {
+  /* svuota le scritte per sostituirle con il game over */
+  didYouWinSon.innerHTML = ('')
+  yourScore.innerHTML = ('')
   gameBox.forEach(box => {
     box.removeEventListener('click', toggleEvent);
     box.classList.add('shake');
@@ -167,7 +168,6 @@ let gameOverText = 'Game Over';
 let userPointText = "you made a total of ";
 
 function showResult() {
-
   if (i < gameOverText.length) {
     didYouWinSon.innerHTML += gameOverText.charAt(i);
     i++;
