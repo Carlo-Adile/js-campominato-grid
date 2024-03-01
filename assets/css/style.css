@@ -5,7 +5,7 @@
 body {
   background: rgb(34, 193, 195);
   background: linear-gradient(0deg, rgba(34, 193, 195, 1) 0%, rgba(253, 187, 45, 1) 100%);
-  height: 110vh;
+  height: 130vh;
   background-size: cover;
   font-family: 'Pixelify Sans', sans-serif !important; 
 }
@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
   font-weight: 600;
   padding: 1rem;
-  width: 85%;
+  width: 80%;
   
 }
 
@@ -30,7 +30,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width:50%;
+  width:55%;
 }
 
 #endgame_screen{
@@ -53,7 +53,7 @@ body {
 }
 
 .box_easy {
-  width: calc(100% / 10)
+  width: calc(100% / 10);
 }
 
 .box_medium {
@@ -65,12 +65,13 @@ body {
 }
 
 [class*="box"] {
+  max-width:90px;
   aspect-ratio: 1 / 1;
   display: flex;
   justify-content: center;
   align-items: center;
   border-image: linear-gradient(#22c1c3, #fdbb2d) 30;
-  border-width: 3px;
+  border-width: 2px;
   border-style: solid;
   font-size: 1.2rem;
   text-shadow: 0 0 5px #ff0000ad;

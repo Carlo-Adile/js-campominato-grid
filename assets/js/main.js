@@ -169,8 +169,7 @@ let speed = 100;
 let gameOverText = 'Game Over';
 /* let userPointText = `you made a total of ${userPoint} points!!`; */
 let userPointText = "you made a total of ";
-let userPointNumber = userPoint + " points!!"
-console.log("check " + userPoint);
+let userPointNumber = userPoint;
 
 function showResult() {
   console.log(userPoint)
