@@ -11,10 +11,12 @@ const didYouWinSon = document.getElementById("did_you_win_son")
 const endGameResult = document.getElementById("endgame_screen")
 const yourScore = document.getElementById("your_score")
 
-/* click sul bottone per avviare */
+/* START GAME
+click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
   e.preventDefault();
   pickDifficulty();
+  gameEvent();
   didYouWinSon.innerHTML = ('')
   yourScore.innerHTML = ('')
   i = 0;
@@ -107,6 +109,7 @@ function campoMinato(difficulty) {
       box.innerHTML = (index)
 
       box.classList.add('bomb')
+      
     }
     else {
       box.innerHTML = (index)
@@ -115,7 +118,7 @@ function campoMinato(difficulty) {
     gameBox.push(box);
   }
 
-  gameEvent();
+  
 }
 
 /* CENTRO GESTIONE EVENTI
@@ -128,7 +131,7 @@ function gameEvent() {
 }
 
 /* EVENTI TOGGLE INTERESSATI:
-- clicka sulla bomba
+- clicka sulla \
 - colora di azzurro 
 - accumula punti
 */
@@ -152,9 +155,9 @@ verifica quando l'utente clicca su una bomba */
 function youLost() {
   gameBox.forEach(box => {
     box.removeEventListener('click', toggleEvent);
+    box.classList.add('shake');
   });
   bombList.length = 0
-
   showResult();
 }
 
@@ -163,9 +166,7 @@ let i = 0;
 let i2 = 0;
 let speed = 100;
 let gameOverText = 'Game Over';
-/* let userPointText = `you made a total of ${userPoint} points!!`; */
 let userPointText = "you made a total of ";
-/* let userPointNumber = finalUserPoint; */
 
 function showResult() {
 
@@ -183,6 +184,4 @@ function showResult() {
     yourScore.innerHTML += userPoint + " points!!";
   }
 }
-
-
 
