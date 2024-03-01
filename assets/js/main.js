@@ -13,6 +13,7 @@ const yourScore = document.getElementById("your_score")
 const audioPlayerBomb = document.getElementById("audio_bomb");
 const audioPlayerStart = document.getElementById("audio_start");
 const audioPlayerScore = document.getElementById("audio_point");
+
 /* START GAME
 click sul bottone per avviare */
 document.getElementById("generate_box").addEventListener('click', function (e) {
@@ -165,7 +166,7 @@ function youLost() {
   showResult();
 }
 
-/* MOSTRA I RISULTATI - REFACTOR */
+/* MOSTRA I RISULTATI - da fare REFACTOR */
 let i = 0;
 let i2 = 0;
 let speed = 100;
