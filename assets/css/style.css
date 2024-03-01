@@ -71,6 +71,7 @@ body {
   justify-content: center;
   align-items: center;
   border-image: linear-gradient(#22c1c3, #fdbb2d) 30;
+  border-image-slice: 1;
   border-width: 2px;
   border-style: solid;
   font-size: 1.2rem;

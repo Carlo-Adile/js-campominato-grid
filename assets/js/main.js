@@ -40,38 +40,33 @@ function pickDifficulty() {
       break;
   }
 
-  getRandomNumb()
+  getRandomBomb()
 
   campoMinato(difficulty)
   console.log(gridBox)
-  return gridBox
 }
 
 
 /* Aggiungi 16 bombe
 genera 16 numeri casuali differenti da 1 a gridBox e li assegna a bombList */
 
-function getRandomNumb(min, max) {
+function getRandomBomb() {
   bombList.length = 0
-  /* check */
-  console.log("random numb is reading gridBox: " + gridBox)
   min = 1;
   max = gridBox;
-  let mushroomCount = 0;
-  let avoidLoop = 0;
+  let bombCount = 0;
 
-  while (mushroomCount < 16) {
+  while (bombCount < 16) {
     let numbToAdd = parseInt(Math.random() * (max - min + 1) + min);
     console.log("random numb is " + numbToAdd)
 
     if (bombList.includes(numbToAdd) === false) {
       bombList.push(numbToAdd);
-      mushroomCount++;
+      bombCount++;
     }
 
-    console.log(bombList)
+    console.log("bombs are placed in these box... " + bombList)
   }
-  return bombList
 }
 
 /* GENERA LE BOX
@@ -135,16 +130,20 @@ function gameEvent() {
 /* EVENTI TOGGLE INTERESSATI:
 - clicka sulla bomba
 - colora di azzurro 
+- accumula punti
 */
-function toggleEvent(userPoint) {
+function toggleEvent() {
+  
   if (this.classList.contains('bomb')) {
     this.innerHTML = ('<i class="fa-solid fa-bomb"></i>');
     youLost();
   }
   else if(this.classList.contains('azure') === false){
     this.classList.toggle('azure');
-      userPoint++;
+      userPoint ++;
+      console.log("current score is " + userPoint)
   }
+
   return userPoint;
 }
 
@@ -156,24 +155,19 @@ function youLost() {
   });
   bombList.length = 0
 
-  /* check */
-  console.log("you lost!");
-  console.log("you made " + userPoint);
   showResult();
 }
 
-/* MOSTRA I RISULTATI */
+/* MOSTRA I RISULTATI - REFACTOR */
 let i = 0;
 let i2 = 0;
 let speed = 100;
 let gameOverText = 'Game Over';
 /* let userPointText = `you made a total of ${userPoint} points!!`; */
 let userPointText = "you made a total of ";
-let userPointNumber = userPoint;
+/* let userPointNumber = finalUserPoint; */
 
 function showResult() {
-  console.log(userPoint)
-  console.log("start of show result effect")
 
   if (i < gameOverText.length) {
     didYouWinSon.innerHTML += gameOverText.charAt(i);
@@ -186,7 +180,7 @@ function showResult() {
     setTimeout(showResult, speed);
   }
   else if(i2 = userPointText.length){
-    yourScore.innerHTML += userPointNumber;
+    yourScore.innerHTML += userPoint + " points!!";
   }
 }
 
